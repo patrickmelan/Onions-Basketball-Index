@@ -1,4 +1,4 @@
-# NCAA March Madness Bracket Predictor
+# NCAA Onions Basketball Index
 
 A probabilistic bracket prediction model for the 2025 NCAA Men's Basketball Tournament, built on KenPom efficiency data.
 
@@ -12,16 +12,16 @@ All stats come from [KenPom](https://kenpom.com/) ratings through March 15, 2026
 
 ### Features Used
 
-| Feature | Description |
-|---------|-------------|
-| NetRtg | Net efficiency rating (points per 100 possessions margin) |
-| ORtg | Adjusted offensive efficiency |
-| DRtg | Adjusted defensive efficiency (lower is better) |
-| AdjT | Adjusted tempo (possessions per 40 minutes) |
-| Luck | Deviation between actual wins and expected wins |
-| NetRtgSOS | Strength of schedule based on net efficiency |
-| ORtgSOS / DRtgSOS | Offensive and defensive strength of schedule |
-| NetRtgNCSOS | Non-conference strength of schedule |
+| Feature           | Description                                               |
+| ----------------- | --------------------------------------------------------- |
+| NetRtg            | Net efficiency rating (points per 100 possessions margin) |
+| ORtg              | Adjusted offensive efficiency                             |
+| DRtg              | Adjusted defensive efficiency (lower is better)           |
+| AdjT              | Adjusted tempo (possessions per 40 minutes)               |
+| Luck              | Deviation between actual wins and expected wins           |
+| NetRtgSOS         | Strength of schedule based on net efficiency              |
+| ORtgSOS / DRtgSOS | Offensive and defensive strength of schedule              |
+| NetRtgNCSOS       | Non-conference strength of schedule                       |
 
 ## Models
 
@@ -45,13 +45,13 @@ A mathematically important note: the "correct" matchup-based approach (team A's 
 
 Builds on v2 and adds an upset detection layer. Each matchup gets an **upset score** based on five signals:
 
-| Signal | Weight | Reasoning |
-|--------|--------|-----------|
-| Close win probability | 40 | Tight games produce more upsets |
-| Favorite's Luck stat | 20 | Lucky teams tend to regress in March |
-| Underdog's Luck stat | 15 | Unlucky teams are due for a bounce back |
-| Favorite's lopsidedness | 0.5 | One-dimensional teams are volatile |
-| Underdog's SOS advantage | 0.3 | Battle-tested underdogs overperform |
+| Signal                   | Weight | Reasoning                               |
+| ------------------------ | ------ | --------------------------------------- |
+| Close win probability    | 40     | Tight games produce more upsets         |
+| Favorite's Luck stat     | 20     | Lucky teams tend to regress in March    |
+| Underdog's Luck stat     | 15     | Unlucky teams are due for a bounce back |
+| Favorite's lopsidedness  | 0.5    | One-dimensional teams are volatile      |
+| Underdog's SOS advantage | 0.3    | Battle-tested underdogs overperform     |
 
 The model picks upsets when the score exceeds a round-dependent threshold (18 in R64, 21 in R32, 24 in S16, etc.) and the underdog has at least a 30% win probability. The threshold increases each round because upsets become harder to predict deeper in the tournament.
 
@@ -61,16 +61,16 @@ Favorites are determined by **seed**, not KenPom ranking — so a 5-seed beating
 
 The v3 model picks Duke as the 2025 national champion, beating Arizona in the final. Monte Carlo simulations (100k iterations) give the following championship probabilities:
 
-| Team | Champion % |
-|------|-----------|
-| Duke | 33.2% |
-| Arizona | 22.5% |
-| Michigan | 20.0% |
-| Florida | 6.4% |
-| Houston | 4.8% |
-| Iowa St. | 3.7% |
-| Illinois | 3.0% |
-| Purdue | 2.6% |
+| Team     | Champion % | In (as of 3/27) |
+| -------- | ---------- | --------------- |
+| Duke     | 33.2%      | ✅              |
+| Arizona  | 22.5%      | ✅              |
+| Michigan | 20.0%      | ✅              |
+| Florida  | 6.4%       | ❌              |
+| Houston  | 4.8%       | ❌              |
+| Iowa St. | 3.7%       | ✅              |
+| Illinois | 3.0%       | ✅              |
+| Purdue   | 2.6%       | ✅              |
 
 ## Running
 
