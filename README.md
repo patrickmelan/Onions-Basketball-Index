@@ -72,6 +72,10 @@ The v3 model picks Duke as the 2025 national champion, beating Arizona in the fi
 | Illinois | 3.0%       | ✅              |
 | Purdue   | 2.6%       | ✅              |
 
+## Live Bracket
+
+View the live bracket and updated predictions at [patrickmelan.com/onions-index](https://patrickmelan.com/onions-index).
+
 ## Running
 
 Open `kenpom.ipynb` in Jupyter and run the cells top to bottom. The notebook is self-contained — it reads the raw CSV and produces cleaned data, bracket predictions, and simulation results.
